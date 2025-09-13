@@ -1,0 +1,29 @@
+import streamlit as st
+options = ('Email', 'Dien thoai ban', 'Dien thoai di dong')
+options = st.selectbox('Chon phuong thuc lien lac', options)
+st.write('Ban da chon:', options)
+
+agree = st.checkbox('I agree')
+if agree:
+    st.write('Great')
+
+age = st.slider('How old are you?', 0, 130, 25)
+st.write("I'm", age, 'years old')
+
+text_contents = 'This is some text'
+st.download_button('Tai xuong', text_contents)
+
+with st.form('Oder do uong'):
+    drinks = ('Tra sua truyen thong', 'Tra sua matcha', 'Tra sua trai cay')
+    option_drink = st.selectbox('Ban muon loai do uong gi?', drinks)
+    sugars = ('Duong trang', 'Duong nau', 'Khong duong')
+    option_sugar = st.selectbox('Ban thich them loai do uong naovcho do uong cua ban?', sugars)
+    jelly = ('Thach rau cau', 'Thach nha dam', 'Khong them thach')
+    option_jelly = st.selectbox('Ban thich loai thach nao cho do uong cua ban?', jelly)
+    nums = st.slider('So luong ban muon dat:', 0, 10, 0)
+    bill = {'Loai do uong:': option_drink, 'Loai duong:': option_sugar, 'Loai thach:': option_jelly, 'So luong:': nums}
+    submitted = st.form_submit_button("Xac nhan")
+    if submitted:
+        st.write('Ban da chon:')
+        for x,y in bill.items():
+            st.write(x,y)
